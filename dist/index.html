@@ -37,9 +37,10 @@ height: 70%;
   <option value="None">None</option>
   <option value="Polygon">Polygon</option>
   <option value="None">DragAndDrop</option>
+  </select><button type="button" id="Download_btn">Download Satelite Data</button>
   <div id="info"></div>
-  System.out.println("asdasd")
-  </select>
+  <!-- System.out.println("asdasd") -->
+  
   </form>
   <p></p>
 <div id="map" class="map"></div>
@@ -116,6 +117,9 @@ map.on('pointermove', function (evt) {
 });
 map.on('click', function (evt) {
   displayFeatureInfo(evt.pixel);
+});
+map.on('click', function (evt) {
+  finishDrawing(document.getElementById('Download_btn').showDnBtn());
 }); //drag and drop
 
 var typeSelect = document.getElementById('type');
@@ -130,6 +134,17 @@ function addInteraction() {
       type: typeSelect.value
     });
     map.addInteraction(draw);
+  }
+} //On Finish Show Download
+
+
+function showDnBtn() {
+  var x = document.getElementById("Download_btn");
+
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
   }
 }
 /**
